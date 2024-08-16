@@ -1,0 +1,40 @@
+
+.dark-mode-toggle {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 20px;
+  }
+  
+  .dark-mode-toggle:hover {
+    background-color: #555;
+  }
+  
+
+  body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+
+  body.dark-mode .header-2 {
+    background-color: #1a1a1a;
+    color: #ccc;
+  }
+  
+  body.dark-mode .nav-links a {
+    color: #ccc;
+  }
+  
+  body.dark-mode .nav-links a:hover {
+    color: white;
+  }
+  body.dark-mode .main-heading {
+    color:white;
+  }
+  body.dark-mode .registration-form label{
+    color: white;
+  }
