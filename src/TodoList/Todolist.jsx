@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { EditIcon, DeleteIcon, CheckIcon, MoonIcon, SunIcon, AddIcon, SearchIcon } from '@chakra-ui/icons';
 import { Button, Input, useColorMode, useColorModeValue, Box, Text, Select, Image, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, IconButton, Checkbox, InputRightElement, InputGroup, Flex } from '@chakra-ui/react';
 const TodoList = () => {
@@ -11,6 +11,21 @@ const TodoList = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const textColor = useColorModeValue('black', 'white');
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem('todoItems'));
+    if (storedItems) {
+      setItems(storedItems);
+    }
+  }, []);
+
+
+  useEffect(() => {
+    if (items.length > 0) {
+      localStorage.setItem('todoItems', JSON.stringify(items));
+    } else {
+      localStorage.removeItem('todoItems');
+    }
+  }, [items]);
 const taskAdd = () => {
     if (!inputData) {
       return;
@@ -85,9 +100,6 @@ const taskAdd = () => {
             <option value="completed">Completed</option>
             <option value="incomplete">Incomplete</option>
           </Select>
-          {/* <Button className='btn' onClick={toggleColorMode}>
-            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-          </Button> */}
           <Button
   onClick={toggleColorMode}
   style={{ backgroundColor: 'blue.500', color: 'white' }} 
